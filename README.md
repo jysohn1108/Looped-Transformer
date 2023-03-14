@@ -56,15 +56,15 @@ Currently, we implemented the following three programs that are run interactivel
 
 Recall that our Looped TF building block implements each SUBLEQ comamnd. Thus, any program written in SUBLEQ commands can be implemented in our Looped TF. Here we describe how we convert a program into SUBLEQ commands.  
 
-Suppose we want to implement a program multiplying two positive numbers, for example $7$ and $9$, stored in two memory positions, say `a` and `b`. Since SUBLEQ implements substraction and then jumps to another command, the program for multiplication consists of the following steps:
+Suppose we want to implement a program multiplying two positive numbers, for example $7$ and $9$, stored in two memory positions, say `a` and `b`. Since SUBLEQ implements subtraction and then jumps to another command, the program for multiplication consists of the following steps:
 
 * *We first initialize five memory components*  `[a,b,temp,zero,one] = [7,9,0,0,1]`.
 
 * Command 1: *Save `-a` to a temporary memory `temp`*  with the command **(SUBLEQ a,temp,2)**, where `2` signifies the next command in line, command 2. 
 
-* Command 2: *Substract 1 from `b`* with the command **(SUBLEQ one,b,EOF)**, where `EOF` is the End Of File command which we reach once `b=0`; otherwise we continue with command 3.
+* Command 2: *Subtract 1 from `b`* with the command **(SUBLEQ one,b,EOF)**, where `EOF` is the End Of File command which we reach once `b=0`; otherwise we continue with command 3.
 
-* Command 3: *Substract the value of `temp` from `a` with the command **(SUBLEQ temp,a,4)**. 
+* Command 3: *Subtract the value of `temp` from `a` with the command **(SUBLEQ temp,a,4)**. 
 
 * Command 4: *Form the loop* with the command **(SUBLEQ zero,zero,2)**.
 
